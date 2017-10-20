@@ -1,0 +1,2 @@
+page:
+  resource: '@PageBundle/Resources/config/routing.yml'

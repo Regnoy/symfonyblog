@@ -1,0 +1,15 @@
+{% extends '@App/Layout/layout-two-col-4-8.html.twig' %}
+
+{% block regionRight %}
+  <div class="block block--page-view">
+    <div class="block-content">
+      <h2 class="field field-title">{{ page.title }}</h2>
+      <div class="field field-body">{{ page.body }}</div>
+      <div class="field field-category">{{ page.category.name }}</div>
+      <div class="field field-created">{{ page.created|date('d-m-Y') }}</div>
+      <div class="field field-comments">{{ include('@Comment/lists.html.twig', {'items' : page.comments }) }}</div>
+
+    </div>
+  </div>
+
+{% endblock %}

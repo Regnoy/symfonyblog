@@ -1,0 +1,7 @@
+page_list:
+  path: /page
+  defaults: { _controller: PageBundle:Page:list }
+
+page_view:
+  path: /page/{id}
+  defaults: { _controller: PageBundle:Page:view }
