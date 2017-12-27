@@ -1,0 +1,26 @@
+term_list:
+  path: /term
+  defaults : { _controller: TermBundle:Term:list }
+
+term_add:
+  path: /term/add
+  defaults : { _controller: TermBundle:Term:add }
+
+term_view:
+  path: /term/{id}
+  defaults : { _controller: TermBundle:Term:view }
+  requirements:
+    id: '\d+'
+
+term_edit:
+  path: /term/{id}/edit
+  defaults : { _controller: TermBundle:Term:edit }
+  requirements:
+    id: '\d+'
+
+#
+term_delete:
+  path: /term/{id}/delete
+  defaults : { _controller: TermBundle:Term:delete }
+  requirements:
+    id: '\d+'

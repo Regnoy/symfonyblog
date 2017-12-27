@@ -2,6 +2,33 @@ page_list:
   path: /page
   defaults: { _controller: PageBundle:Page:list }
 
+page_add:
+  path: /page/add
+  defaults: { _controller: PageBundle:Page:add }
+
 page_view:
   path: /page/{id}
   defaults: { _controller: PageBundle:Page:view }
+  requirements:
+    id: '\d+'
+
+#page_comments:
+#  path: /page/{id}/comments
+#  requirements:
+#    id: '\d+'
+
+page_edit:
+  path: /page/{id}/edit
+  defaults: { _controller: PageBundle:Page:edit }
+  requirements:
+    id: '\d+'
+#
+page_delete:
+  path: /page/{id}/delete
+  defaults: { _controller: PageBundle:Page:remove }
+  requirements:
+    id: '\d+'
+
+
+
+

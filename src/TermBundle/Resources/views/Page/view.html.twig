@@ -1,0 +1,11 @@
+{% extends '@App/Layout/layout-two-col-4-8.html.twig' %}
+
+{% block regionRight %}
+  <div class="block block--term-view">
+    <div class="block-content">
+      <h2 class="field field-name">{{ term.name }}</h2>
+      <div class="field field-description">{{ term.description }}</div>
+    </div>
+  </div>
+
+{% endblock %}

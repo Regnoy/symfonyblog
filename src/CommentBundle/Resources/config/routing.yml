@@ -1,0 +1,11 @@
+comment_edit:
+  path: /comment/{id}/edit
+  defaults: { _controller: CommentBundle:Comment:edit }
+  requirements:
+    id: '\d+'
+#
+comment_delete:
+  path: /comment/{id}/delete
+  defaults: { _controller: CommentBundle:Comment:remove }
+  requirements:
+    id: '\d+'

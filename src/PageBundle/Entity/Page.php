@@ -43,6 +43,7 @@ class Page {
 
   /**
    * @ORM\ManyToMany(targetEntity="\CommentBundle\Entity\Comment", mappedBy="pages", cascade={"persist", "remove"})
+   * @ORM\OrderBy({"id" = "DESC"})
    */
   private $comments;
 
@@ -188,5 +189,8 @@ class Page {
   public function getComments()
   {
     return $this->comments;
+  }
+  public function setId(){
+    //
   }
 }

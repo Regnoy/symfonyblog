@@ -171,4 +171,7 @@ class Term {
     {
         return $this->pages;//$this->pages->toArray();
     }
+    public function __toString() {
+      return $this->name;
+    }
 }
