@@ -10,6 +10,7 @@ namespace CommentBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use PageBundle\Entity\Page;
 
 /**
  * Class Page
@@ -32,10 +33,10 @@ class Comment {
 
 
   /**
-   * @ORM\ManyToMany(targetEntity="\PageBundle\Entity\Page", inversedBy="comments")
-   * @ORM\JoinTable(name="pages_comments")
+   * @ORM\ManyToOne(targetEntity="\PageBundle\Entity\Page", inversedBy="comments")
+   * @ORM\JoinColumn(name="page_id", referencedColumnName="id")
    */
-  private $pages;
+  private $page;
 
   /**
    * @ORM\Column(type="datetime")
@@ -44,7 +45,6 @@ class Comment {
 
   public function  __construct(){
     $this->created = new \DateTime();
-    $this->pages = new ArrayCollection();
   }
 
     /**
@@ -111,30 +111,21 @@ class Comment {
      *
      * @return Comment
      */
-    public function addPage(\PageBundle\Entity\Page $page)
+    public function setPage(\PageBundle\Entity\Page $page)
     {
-        $this->pages[] = $page;
+        $this->page = $page;
 
         return $this;
     }
 
-    /**
-     * Remove page
-     *
-     * @param \PageBundle\Entity\Page $page
-     */
-    public function removePage(\PageBundle\Entity\Page $page)
-    {
-        $this->pages->removeElement($page);
-    }
 
     /**
      * Get pages
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Page
      */
-    public function getPages()
+    public function getPage()
     {
-        return $this->pages;
+        return $this->page;
     }
 }

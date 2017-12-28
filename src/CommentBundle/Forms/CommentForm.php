@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: pavel
- * Date: 12/27/2017
- * Time: 9:01 AM
- */
 
 namespace CommentBundle\Forms;
-
 
 use CommentBundle\Entity\Comment;
 use Symfony\Component\Form\AbstractType;

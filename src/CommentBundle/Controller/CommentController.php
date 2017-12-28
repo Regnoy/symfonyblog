@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: pavel
- * Date: 12/27/2017
- * Time: 9:14 AM
- */
 
 namespace CommentBundle\Controller;
-
 
 use CommentBundle\Forms\CommentDeleteForm;
 use CommentBundle\Forms\CommentForm;
@@ -48,9 +41,13 @@ class CommentController extends Controller {
 
     $form->handleRequest($request);
     if($form->isSubmitted()){
+      $page = $comment->getPage();
       $em->remove($comment);
       $em->flush();
-      return $this->redirectToRoute('page_list');
+
+      return $this->redirectToRoute('page_view',[
+        'page' => $page->getId()
+      ]);
     }
     return $this->render('CommentBundle::delete.html.twig', [
       'form' => $form->createView()

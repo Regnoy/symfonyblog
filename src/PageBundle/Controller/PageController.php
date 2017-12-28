@@ -35,7 +35,7 @@ class PageController extends Controller {
     if($commentForm->isSubmitted()){
       /** @var Comment $comment */
       $comment = $commentForm->getData();
-      $comment->addPage($page);
+      $comment->setPage($page);
       $em = $this->getDoctrine()->getManager();
       $em->persist($comment);
       $em->flush();
