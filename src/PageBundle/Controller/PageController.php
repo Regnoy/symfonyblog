@@ -106,5 +106,17 @@ class PageController extends Controller {
       'form' => $form->createView()
     ]);
   }
+  public function commentsAction($id){
+    $pageRepo = $this->getDoctrine()->getRepository('PageBundle:Page');
+    /** @var Page $page */
+    $page = $pageRepo->find($id);
+    if(!$page){
+      throw $this->createNotFoundException('The page does not exist');
+    }
+//    $em = $this->getDoctrine()->getManager();
+    return $this->render('PageBundle:Page:page_comments.html.twig',[
+      'page' => $page,
+    ]);
+  }
 
 }
