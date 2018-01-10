@@ -12,7 +12,7 @@
           <h2 class="comment-title">Comments</h2>
           {{ form(comment_form) }}
           <div class="list">
-            {% for item in page.comments %}
+            {% for item in page_comments %}
               <div class="list-item">
                 {{ include('@Comment/ViewMode/teaser.html.twig', {'item' : item }) }}
                 <ul>

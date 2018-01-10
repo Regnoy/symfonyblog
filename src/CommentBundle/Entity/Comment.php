@@ -15,7 +15,7 @@ use PageBundle\Entity\Page;
 /**
  * Class Page
  * @package PageBundle\Entity
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="CommentBundle\Repository\CommentRepository")
  * @ORM\Table(name="comment")
  */
 class Comment {

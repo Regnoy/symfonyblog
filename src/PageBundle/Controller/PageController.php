@@ -29,21 +29,25 @@ class PageController extends Controller {
     if(!$page){
       throw $this->createNotFoundException('The page does not exist');
     }
-
+    $em = $this->getDoctrine()->getManager();
     $commentForm = $this->createForm(CommentForm::class);
     $commentForm->handleRequest($request);
     if($commentForm->isSubmitted()){
       /** @var Comment $comment */
       $comment = $commentForm->getData();
       $comment->setPage($page);
-      $em = $this->getDoctrine()->getManager();
+
       $em->persist($comment);
       $em->flush();
       return $this->redirectToRoute('page_view', ['id' => $page->getId()]);
     }
+    $commentRepo = $em->getRepository(Comment::class);
+    $comments = $commentRepo->findLastComments($page, 10);
+
     return $this->render('PageBundle:Page:view.html.twig',[
       'page' => $page,
-      'comment_form' => $commentForm->createView()
+      'comment_form' => $commentForm->createView(),
+      'page_comments' => $comments
     ]);
   }
 
