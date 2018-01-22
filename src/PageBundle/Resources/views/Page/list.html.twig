@@ -11,6 +11,18 @@
         {% endfor %}
       </div>
     </div>
+    <div class="block-navigation">
+      <ul class="pager">
+        {% if navigator.pager > 1 %}
+          <li class="pager-item"><a href="{{ path('page_list', { 'page' : navigator.pager - 1 }) }}">back</a></li>
+        {% endif %}
+        <li class="pager-item">{{ navigator.pager }}</li>
+        {% if navigator.pager*navigator.limit < navigator.total %}
+          <li class="pager-item"><a href="{{ path('page_list', { 'page' : navigator.pager + 1 }) }}">next</a></li>
+        {% endif %}
+      </ul>
+    </div>
   </div>
+
 
 {% endblock %}

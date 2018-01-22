@@ -14,11 +14,19 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PageController extends Controller {
 
-  public function listAction(){
+  public function listAction( Request $request ){
     $pageRepo = $this->getDoctrine()->getRepository('PageBundle:Page');
-    $pages = $pageRepo->findAll();
+    $pager = $request->query->get('page') ? $request->query->get('page') : 1;
+    $limit = 2;
+    $pages = $pageRepo->findPages($pager, $limit);
+    $pager = [
+      'pager' => $pager,
+      'total' => $pageRepo->countPage(),
+      'limit' => $limit
+    ];
     return $this->render('PageBundle:Page:list.html.twig',[
-      'pages' => $pages
+      'pages' => $pages,
+      'navigator' => $pager
     ]);
   }
 
@@ -106,16 +114,28 @@ class PageController extends Controller {
       'form' => $form->createView()
     ]);
   }
-  public function commentsAction($id){
+  public function commentsAction($id, Request $request){
     $pageRepo = $this->getDoctrine()->getRepository('PageBundle:Page');
     /** @var Page $page */
     $page = $pageRepo->find($id);
     if(!$page){
       throw $this->createNotFoundException('The page does not exist');
     }
+    $pager = $request->query->get('pager') ? $request->query->get('pager') : 1;
+    $limit = 10;
+    $commentRepo = $this->getDoctrine()->getRepository('CommentBundle:Comment');
+    $comments = $commentRepo->findComments($page, $pager, $limit);
+
+    $pager = [
+      'pager' => $pager,
+      'total' => $commentRepo->countComments($page),
+      'limit' => $limit
+    ];
 //    $em = $this->getDoctrine()->getManager();
     return $this->render('PageBundle:Page:page_comments.html.twig',[
       'page' => $page,
+      'comments' => $comments,
+      'navigator' => $pager
     ]);
   }
 
