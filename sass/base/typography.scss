@@ -1,0 +1,12 @@
+@import "compass";
+html,body {
+  padding:0;
+  margin:0;
+}
+body{
+  overflow-y: scroll;
+  font: 14px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+*{
+  @include box-sizing(border-box);
+}

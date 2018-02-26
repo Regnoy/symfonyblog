@@ -30,6 +30,9 @@ page_delete:
   requirements:
     id: '\d+'
 
+page_search:
+  path: /search
+  defaults: { _controller: PageBundle:Page:search }
 
 
 

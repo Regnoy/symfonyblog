@@ -1,0 +1,3 @@
+app_preview:
+  path: /preview
+  defaults: { _controller: AppBundle:Default:preview }

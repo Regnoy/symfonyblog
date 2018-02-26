@@ -27,4 +27,11 @@ class PageRepository extends EntityRepository {
     return $result ? array_shift($result) : 0;
   }
 
+  public function findByWord( $word ){
+    $qry = $this->createQueryBuilder('p')->where('p.body LIKE :word');
+    $qry->setParameter('word' , '%'.$word.'%');
+    $qry->setMaxResults(20);
+    return $qry->getQuery()->getResult();
+  }
+
 }

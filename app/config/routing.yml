@@ -6,3 +6,6 @@ term:
 
 comment:
   resource: '@CommentBundle/Resources/config/routing.yml'
+
+app:
+  resource: '@AppBundle/Resources/config/routing.yml'
