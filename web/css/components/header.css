@@ -1,0 +1,4 @@
+.header { padding: 30px; }
+
+@media (min-width: 960px) { .region-header { display: -webkit-flex; display: flex; -webkit-flex-flow: row nowrap; flex-flow: row nowrap; }
+  .region-header .block-logo { -webkit-flex: 1; flex: 1; } }

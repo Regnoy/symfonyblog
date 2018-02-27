@@ -12,4 +12,7 @@ class BlockController extends Controller {
   public function mainMenuAction(){
     return $this->render('@App/Block/main-menu.html.twig');
   }
+  public function mainMenuFooterAction(){
+    return $this->render('@App/Block/main-menu-footer.html.twig');
+  }
 }

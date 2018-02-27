@@ -1,0 +1,9 @@
+@import "../default";
+.page{
+  max-width: 1200px;
+  margin:0 auto;
+  &-wrap{
+    padding: 0 10px;
+    background-image: image-url('page-bg-1.jpg');
+  }
+}

@@ -1,0 +1,14 @@
+@import "../default";
+@import "../inc/variable";
+.header{
+  padding: 30px;
+}
+.region-header{
+  @include breakpoint($desktop){
+    @include display-flex;
+    @include flex-flow(row nowrap);
+    .block-logo{
+      @include flex(1);
+    }
+  }
+}
