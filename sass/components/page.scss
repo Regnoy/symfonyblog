@@ -1,9 +1,96 @@
 @import "../default";
+@import "../inc/variable";
+@import "../inc/mixins";
 .page{
   max-width: 1200px;
   margin:0 auto;
   &-wrap{
     padding: 0 10px;
     background-image: image-url('page-bg-1.jpg');
+  }
+}
+.main{
+  &-wrap{
+    max-width: 1200px;
+    margin: 0 auto;
+    @include display-flex;
+    @include flex-flow(row wrap);
+    .sidebar-left{
+      @include flex(1 100%);
+      @include order(2);
+    }
+    .main{
+      @include flex(1 100%);
+    }
+    @include breakpoint($desktop){
+      .sidebar-left{
+        @include flex(none);
+        width: calc(33% - 15px );
+      }
+      .main{
+        @include flex(none);
+        width: calc(67% - 15px );
+        margin-right: 30px;
+      }
+
+    }
+  }
+}
+.block{
+  &-title{
+    h2{
+      font-size: 24px;
+      line-height: 40px;
+      background: $gray_f8;
+      padding: 10px 5px;
+      margin: 0;
+      text-transform: uppercase;
+      border-bottom: 1px dotted $gray_a9;
+      border-top: 1px dotted $gray_a9;
+      font-family: "Oswald", sans-serif;
+      @include text-shadow(1px 1px 0 #fdfdfd, 2px 2px 0 rgba(81, 81, 81, 0.5), 0 0 1px #fdfdfd)
+    }
+  }
+}
+.sidebar{
+  .block{
+    margin-bottom: 30px;
+    &-title{
+     margin-bottom: 15px;
+    }
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+}
+.block-category-list{
+  .menu{
+    @include resetLi;
+    &-item{
+      border-bottom: 1px dashed $gray_a9;
+      padding: 10px 0;
+      &:last-child{
+        border-bottom-width: 0;
+      }
+    }
+    a{
+      position: relative;
+      text-transform: uppercase;
+      margin-left: 30px;
+      font-size: 12px;
+      &:before{
+        position: absolute;
+        content: "";
+        left: -20px;
+        top: 0 ;
+        width: 14px;
+        height: 14px;
+        margin-top: 1px;
+        line-height: 14px;
+        vertical-align: text-top;
+        background-image: image-url('glyphicons-halflings.png');
+        background-position: 0 -95px;
+      }
+    }
   }
 }
