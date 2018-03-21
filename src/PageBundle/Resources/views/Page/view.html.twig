@@ -1,12 +1,15 @@
-{% extends '@App/Layout/layout-two-col-4-8.html.twig' %}
-
-{% block regionRight %}
-  <div class="block block--page-view">
+{% extends '@App/page_default.html.twig' %}
+{% block page_title %}{{ page.title }}{% endblock %}
+ {% block main %}
+  <article class="block block--page-view page-view page-{{ page.id }}">
     <div class="block-content">
-      <h2 class="field field-title">{{ page.title }}</h2>
-      <div class="field field-body">{{ page.body }}</div>
-      <div class="field field-category">{{ page.category.name }}</div>
-      <div class="field field-created">{{ page.created|date('d-m-Y') }}</div>
+      <div class="fields fields-top">
+        <div class="field field-body">{{ page.body }}</div>
+        <div class="list-link">
+          <div class="list-link-item page-category">{{ page.category.name }}</div>
+          <div class="list-link-item page-created">{{ page.created|date('d-m-Y') }}</div>
+        </div>
+      </div>
       <div class="field field-comments">
         <div class="comment-preview">
           <h2 class="comment-title">Comments</h2>
@@ -26,6 +29,6 @@
       </div>
 
     </div>
-  </div>
+  </article>
 
-{% endblock %}
+ {% endblock %}

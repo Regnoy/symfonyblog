@@ -4,9 +4,22 @@
 .page{
   max-width: 1200px;
   margin:0 auto;
+  @include display-flex;
+  @include flex-flow(column wrap);
+  height: 100%;
+  & > *{
+    width: 100%;
+    //@include flex(1 100%);
+  }
+
+  footer{
+    margin-top: auto;
+    //@include align-self(flex-end);
+  }
   &-wrap{
     padding: 0 10px;
     background-image: image-url('page-bg-1.jpg');
+    height: 100%;
   }
 }
 .main{
@@ -94,3 +107,26 @@
     }
   }
 }
+.page-view{
+  .fields{
+    &-top{
+      background-color: $white;
+      padding: 20px;
+      .list-link{
+        margin-top: 20px;
+        @include display-flex;
+        @include flex-direction(row);
+        @include justify-content(flex-end);
+        font-size: 12px;
+
+        &-item{
+          margin-right: 10px;
+          &:last-child{
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+}
+

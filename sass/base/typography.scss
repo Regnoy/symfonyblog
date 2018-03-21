@@ -3,6 +3,8 @@
 html,body {
   padding:0;
   margin:0;
+  height: 100%;
+  width: 100%;
 }
 body{
   overflow-y: scroll;
@@ -18,4 +20,17 @@ a{
   &:hover{
     text-decoration: underline;
   }
+}
+
+h1{
+  font-family: "Oswald", sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 36px;
+  line-height: 40px;
+  background: #f8f8f8;
+  padding: 10px 5px;
+  margin: 0 0 20px 0;
+  border-bottom: 1px dotted $gray_a9;
+  border-top: 1px dotted $gray_a9;
 }

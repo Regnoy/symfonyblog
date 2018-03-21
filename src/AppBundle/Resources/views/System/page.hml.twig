@@ -24,6 +24,9 @@
         </aside>
         <main class="main" id="main">
           <div class="region region-main">
+            <div class="block block-title-page">
+              <h1 id="page_title">{% block page_title %}{% endblock %}</h1>
+            </div>
             {% block main %}{% endblock %}
           </div>
         </main>

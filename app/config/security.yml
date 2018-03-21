@@ -3,10 +3,17 @@
 security:
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    encoders:
+        UserBundle\Entity\User:
+            algorithm: sha1
+            encode_as_base64: false
+            iterations: 512
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        in_memory:
-            memory: ~
-
+        main:
+            id: user.provider
+#            entity:
+#                class: UserBundle\Entity\User
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
@@ -14,7 +21,16 @@ security:
             security: false
 
         main:
-            anonymous: ~
+           anonymous: true
+           http_basic: ~
+           provider: main
+           form_login:
+               login_path: /login
+               check_path: /login
+           logout:
+               path: /logout
+    access_control:
+        - { path: ^/user, roles: ROLE_USER }
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate

@@ -1,0 +1,31 @@
+login:
+  path: /login
+  defaults: { _controller: UserBundle:Security:login }
+
+logout:
+  path: /logout
+
+register:
+  path: /register
+  defaults: { _controller: UserBundle:Security:register }
+
+recover:
+  path: /recover/{token}
+  defaults: { _controller: UserBundle:Security:recover, token: null }
+
+
+user:
+  path: /user
+
+user_password_recover:
+  path: /user/recover-password
+  defaults: { _controller: UserBundle:User:recoverPassword }
+#
+#user_own_edit:
+#  path: /user/edit
+#
+#user_view:
+#  path: /user/{id}
+#
+#user_edit:
+#  path: /user/{$id}/edit
