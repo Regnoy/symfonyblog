@@ -5,6 +5,8 @@ namespace PageBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use UserBundle\Entity\User;
+
 /**
  * Class Page
  * @package PageBundle\Entity
@@ -46,6 +48,12 @@ class Page {
    * @ORM\OrderBy({"id" = "DESC"})
    */
   private $comments;
+
+  /**
+   * @ORM\ManyToOne(targetEntity="\UserBundle\Entity\User")
+   * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+   */
+  private $user;
 
   public function __construct() {
     $this->created = new \DateTime();
@@ -193,4 +201,19 @@ class Page {
   public function setId(){
     //
   }
+
+  /**
+   * @return mixed
+   */
+  public function getUser()
+  {
+    return $this->user;
+  }
+
+
+  public function setUser(User $user)
+  {
+    $this->user = $user;
+  }
+
 }

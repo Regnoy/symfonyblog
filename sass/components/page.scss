@@ -9,18 +9,14 @@
   min-height: 100%;
   & > *{
     width: 100%;
-    //@include flex(1 100%);
   }
   footer{
     margin-top: auto;
-    //@include align-self(flex-end);
   }
   &-wrap{
     padding: 0 10px 30px 10px;
     background-image: image-url('page-bg-1.jpg');
     height: 100%;
-
-
   }
 }
 .main{

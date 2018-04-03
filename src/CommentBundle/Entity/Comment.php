@@ -39,6 +39,13 @@ class Comment {
   private $page;
 
   /**
+   * @ORM\ManyToOne(targetEntity="\UserBundle\Entity\User")
+   * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+   */
+
+  private $user;
+
+  /**
    * @ORM\Column(type="datetime")
    */
   private $created;
@@ -128,4 +135,22 @@ class Comment {
     {
         return $this->page;
     }
+
+  /**
+   * @return mixed
+   */
+  public function getUser()
+  {
+    return $this->user;
+  }
+
+  /**
+   * @param  $user
+   */
+  public function setUser(User $user)
+  {
+
+    $this->user = $user;
+  }
+
 }

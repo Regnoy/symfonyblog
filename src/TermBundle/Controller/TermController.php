@@ -2,6 +2,7 @@
 
 namespace TermBundle\Controller;
 
+use PageBundle\Entity\Page;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use TermBundle\Entity\Term;
@@ -12,6 +13,8 @@ class TermController extends Controller {
 
   public function listAction(){
     $terms = $this->getDoctrine()->getRepository('TermBundle:Term')->findAll();
+
+
     return $this->render('@Term/Page/list.html.twig', [
       'terms' => $terms
     ]);
@@ -40,8 +43,11 @@ class TermController extends Controller {
     if(!$term){
       throw $this->createNotFoundException('The term does not exist');
     }
+    $pageRepo = $this->getDoctrine()->getRepository(Page::class);
+    $pages = $pageRepo->findByTerms($term);
     return $this->render('TermBundle:Page:view.html.twig',[
-      'term' => $term
+      'term' => $term,
+      'pages' => $pages
     ]);
   }
   public function editAction($id, Request $request){
