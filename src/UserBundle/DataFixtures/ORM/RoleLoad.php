@@ -21,7 +21,5 @@ class RoleLoad implements FixtureInterface {
       $manager->flush();
     }
   }
-  public function getOrder(){
-    return 1;
-  }
+
 }

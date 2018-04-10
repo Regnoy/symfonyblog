@@ -14,6 +14,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use PageBundle\Entity\Page;
 use TermBundle\DataFixtures\ORM\TermLoad;
 use TermBundle\Entity\Term;
+use UserBundle\DataFixtures\ORM\UserLoad;
 
 class PageLoad extends Fixture {
 
@@ -35,7 +36,8 @@ class PageLoad extends Fixture {
 
   public function getDependencies() {
     return [
-      TermLoad::class
+      TermLoad::class,
+      UserLoad::class
     ];
   }
 }

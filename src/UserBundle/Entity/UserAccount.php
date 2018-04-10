@@ -35,7 +35,7 @@ class UserAccount {
    */
   private $birthday;
   /**
-   * @ORM\Column(type="string")
+   * @ORM\Column(type="string", nullable=true)
    */
   private $region;
 
