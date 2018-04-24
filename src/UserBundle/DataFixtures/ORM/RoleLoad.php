@@ -1,14 +1,15 @@
 <?php
 
 
-namespace UserBundle\DataFixtures\ORM;
+namespace App\DataFixtures\ORM;
 
-
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use UserBundle\Entity\Role;
 
-class RoleLoad implements FixtureInterface {
+
+class RoleLoad extends Fixture{
   
   public function load(ObjectManager $manager) {
     $roleRepo = $manager->getRepository(Role::class);

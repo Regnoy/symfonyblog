@@ -2,6 +2,8 @@
 
 namespace UserBundle\DataFixtures\ORM;
 
+
+use App\DataFixtures\ORM\RoleLoad;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use UserBundle\Entity\Role;
@@ -9,8 +11,6 @@ use UserBundle\Entity\User;
 use UserBundle\Entity\UserAccount;
 
 class UserLoad extends Fixture  {
-
-
 
   public function load(ObjectManager $manager) {
 
